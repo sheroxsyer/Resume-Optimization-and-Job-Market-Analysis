@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Optimizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/frontcss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>CV Optimizer</h1>
+        <p>Optimize your resume, get personalized job recommendations, and explore job market trends.</p>
+    </header>
+
+    <main>
+        <div class="flex-grow container mx-auto mt-10 px-4 sm:px-0">
+            <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 flex flex-col">
+                <!-- Report display section -->
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Resume Analysis Report</h2>
+                    <div id="reportContent" class="bg-gray-100 p-4 rounded-lg text-left text-gray-700 whitespace-pre-wrap">
+                        {{ report }}
+                    </div>
+                </div>
+
+                <!-- Job Recommendations section -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Job Recommendations</h2>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        {% for job, score in recommendations %}
+                        <div class="mb-2">
+                            <strong>{{ job }}</strong> (Match Score: {{ score|floatformat:2 }})
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Market Trend Analysis section -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Market Trend Analysis</h2>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <p><strong>Job Title:</strong> {{ trend_analysis.job_title }}</p>
+                        <p><strong>Trend Prediction:</strong> {{ trend_analysis.prediction|floatformat:2 }}</p>
+                        <p><strong>Analysis Period:</strong> {{ trend_analysis.month }}/{{ trend_analysis.year }}</p>
+                    </div>
+                </div>
+
+                <!-- Upload another file -->
+                <a href="/" class="btn">Upload Another PDF</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CV Optimizer. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

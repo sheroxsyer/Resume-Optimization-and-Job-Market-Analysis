@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV Optimizer</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/frontcss.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>CV Optimizer</h1>
+      <p>
+        Optimize your resume, get personalized job recommendations, and explore
+        job market trends.
+      </p>
+    </header>
+
+    <main>
+      <!-- Introduction Section -->
+      <section id="introduction">
+        <h2>Introduction</h2>
+        <p>
+          Our platform combines resume optimization and job market analysis to
+          empower job seekers. By analyzing your resume and market trends, we
+          help you align your skills with current demands.
+        </p>
+      </section>
+
+      <!-- Resume Upload Section -->
+      <section id="uploadSection">
+        <h2>Upload Your Resume</h2>
+        <p>Upload your resume to get AI-powered optimization suggestions.</p>
+        <form
+          method="post"
+          action="{% url 'upload_pdf' %}"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %}
+          <input
+            type="file"
+            id="resumeUpload"
+            name="pdf_file"
+            class="file-input"
+            accept=".pdf, .docx, .txt"
+            required
+          />
+          <button type="submit" class="btn">Upload</button>
+        </form>
+        <div id="resume-results">
+          <h3>Optimization Results:</h3>
+          <p>Results will be displayed here after processing.</p>
+        </div>
+      </section>
+
+   
+    </main>
+
+    <footer>
+      <p>&copy; 2024 CV Optimizer. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
